@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="color-scheme" content="dark"/>
+<link rel="icon" href="data:,"/>
+<title>Rahul Tumula — Portfolio</title>
+<meta name="description" content="Rahul Tumula — Software Development Engineer II at AWS. Identity & Authorization for AI Agents, Applied AI. Herndon, Virginia."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#09090b; --bg2:#0c0c0e; --panel:#101012; --panel2:#141416;
+  --border:#27272a; --border-soft:#1f1f22;
+  --text:#fafafa; --body:#d4d4d8; --muted:#a1a1aa; --faint:#71717a;
+  --emerald:#34d399; --emerald-dim:#064e3b; --emerald-soft:#6ee7b7;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--body);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button,input{font:inherit}
+::selection{background:var(--emerald-dim);color:#fff}
+
+/* ---------- NAV ---------- */
+.nav{position:sticky;top:0;z-index:40;background:rgba(9,9,11,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border-soft)}
+.nav-inner{max-width:1020px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-height:44px}
+.brand-mark{width:32px;height:32px;border-radius:8px;background:var(--emerald);color:#052e22;display:grid;place-items:center;font-family:"JetBrains Mono",monospace;font-weight:700;font-size:13px;letter-spacing:-.02em;flex:none}
+.brand-name{font-weight:700;color:var(--text);font-size:15px;letter-spacing:-.01em;white-space:nowrap}
+.brand-name span{color:var(--emerald);font-family:"JetBrains Mono",monospace;font-weight:600}
+.nav-links{display:flex;gap:2px;align-items:center;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:10px 11px;border-radius:8px;white-space:nowrap;min-height:40px;display:inline-flex;align-items:center}
+.nav-links a:hover,.nav-links a.active{color:var(--text);background:#18181b}
+.nav-cta{flex:none;background:var(--emerald);color:#052e22 !important;font-weight:700}
+.nav-cta:hover{background:var(--emerald-soft) !important;color:#052e22 !important}
+@media(max-width:720px){
+  .brand-name{display:none}
+  .nav-inner{padding:6px 12px;height:auto;min-height:56px;flex-wrap:wrap;justify-content:center}
+  .nav-links{flex-wrap:wrap;justify-content:center;overflow-x:visible}
+  .nav-links a{padding:9px 7px;font-size:11px;min-height:36px}
+  section{scroll-margin-top:110px}
+}
+
+/* ---------- LAYOUT ---------- */
+.wrap{max-width:1020px;margin:0 auto;padding:0 20px 72px}
+section{scroll-margin-top:84px}
+.kicker{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.10em;color:var(--emerald);text-transform:uppercase}
+h2.sec{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--emerald);margin:52px 0 16px;font-weight:600;display:flex;align-items:center;gap:12px}
+h2.sec::after{content:"";height:1px;background:var(--border);flex:1}
+p{line-height:1.78;color:var(--muted);font-size:15.5px;margin:0}
+strong{color:var(--text)}
+
+/* ---------- HERO ---------- */
+.hero{padding:56px 0 34px;border-bottom:1px solid var(--border)}
+.hero h1{font-size:56px;line-height:.96;letter-spacing:-.035em;margin:14px 0 14px;color:var(--text);font-weight:800}
+.hero .role{font-size:18px;line-height:1.55;color:var(--muted);max-width:720px}
+.hero .role strong{color:var(--text)}
+.hero-loc{margin-top:10px;font-size:14px;color:var(--faint);display:flex;align-items:center;gap:8px}
+.hero-loc i{width:7px;height:7px;border-radius:50%;background:var(--emerald);display:inline-block;flex:none}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.meta-row a,.meta-row span{font-family:"JetBrains Mono",monospace;font-size:12px;border:1px solid var(--border);background:#18181b;padding:10px 12px;border-radius:9px;text-decoration:none;color:var(--body);min-height:40px;display:inline-flex;align-items:center}
+.meta-row a:hover{border-color:var(--emerald);color:var(--text)}
+.meta-row a.meta-resume{background:var(--emerald);color:#052e22;border-color:var(--emerald);font-weight:700}
+.meta-row a.meta-resume:hover{background:var(--emerald-soft);color:#052e22;border-color:var(--emerald-soft)}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:28px}
+.stat{border:1px solid var(--border-soft);background:var(--bg2);border-radius:12px;padding:14px 14px 12px}
+.stat b{display:block;font-size:20px;color:var(--text);letter-spacing:-.02em;line-height:1}
+.stat span{display:block;margin-top:6px;font-size:12px;line-height:1.45;color:var(--faint)}
+@media(max-width:760px){.hero{padding-top:38px}.hero h1{font-size:40px}.hero-stats{grid-template-columns:1fr 1fr}}
+
+/* ---------- ABOUT ---------- */
+.about-grid{display:grid;grid-template-columns:1.65fr .85fr;gap:14px;align-items:start}
+.about-card{border:1px solid var(--border);background:var(--panel);border-radius:var(--radius);padding:20px}
+.about-card h3{margin:0 0 10px;font-size:14px;color:var(--text)}
+.about-card ul{margin:0;padding:0;list-style:none}
+.about-card li{font-size:13.5px;line-height:1.6;color:var(--muted);padding:9px 0;border-top:1px solid var(--border-soft)}
+.about-card li:first-child{border-top:0;padding-top:2px}
+.about-card li b{color:var(--text);font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:2px;font-weight:600}
+@media(max-width:760px){.about-grid{grid-template-columns:1fr}}
+
+/* ---------- EXPERIENCE ---------- */
+.job{border:1px solid var(--border);background:var(--panel);border-radius:var(--radius);padding:20px;margin-bottom:12px}
+.job-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.job h3{margin:0;font-size:16.5px;color:var(--text);line-height:1.35;letter-spacing:-.01em}
+.job .sub{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--faint);margin:6px 0 0;letter-spacing:.03em;text-transform:uppercase}
+.tag{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:var(--emerald-dim);color:var(--emerald-soft);padding:5px 8px;border-radius:999px;white-space:nowrap}
+.job ul{margin:12px 0 0;padding-left:18px;line-height:1.68;font-size:14.5px;color:var(--muted)}
+.job li{margin:7px 0}
+.job li::marker{color:var(--emerald)}
+
+/* ---------- SKILLS ---------- */
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.skill{border:1px solid var(--border);background:var(--bg2);border-radius:12px;padding:18px}
+.skill h3{margin:0 0 10px;font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--text);letter-spacing:.07em;text-transform:uppercase}
+.skill p{font-size:13.5px;line-height:1.65}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.chips span{font-size:12px;border:1px solid var(--border);background:#18181b;color:var(--body);padding:6px 9px;border-radius:999px;line-height:1.2}
+@media(max-width:760px){.skills{grid-template-columns:1fr}}
+
+/* ---------- PROJECTS ---------- */
+.projects{display:grid;grid-template-columns:1fr;gap:12px}
+.proj{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel2),var(--bg2));border-radius:var(--radius);padding:20px}
+.proj.featured{border-color:#2f4a3e;background:linear-gradient(180deg,#121a16,var(--bg2))}
+.proj h3{font-size:16.5px;line-height:1.35;margin:0 0 8px;color:#fff;letter-spacing:-.01em}
+.proj p{font-size:14px;line-height:1.7}
+.proj .stack{margin-top:12px;font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--emerald);letter-spacing:.02em;line-height:1.6}
+.proj-links{margin-top:12px}
+.proj-links a{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.02em;color:var(--emerald-soft);text-decoration:none;border:1px solid var(--border);background:#18181b;padding:8px 10px;border-radius:8px;display:inline-flex;align-items:center;min-height:36px}
+.proj-links a:hover{border-color:var(--emerald);color:var(--text)}
+.badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--emerald-dim);color:var(--emerald-soft);padding:4px 8px;border-radius:999px;margin-left:8px;vertical-align:middle;font-family:"JetBrains Mono",monospace}
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:760px){.proj-grid{grid-template-columns:1fr}}
+
+/* ---------- EDUCATION / CERTS ---------- */
+.edu{border:1px solid var(--border);background:var(--panel);border-radius:var(--radius);padding:20px}
+.edu h3{margin:0;font-size:16.5px;color:var(--text)}
+.edu .sub{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--faint);margin:6px 0 12px;text-transform:uppercase;letter-spacing:.03em}
+.edu-facts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.edu-facts span{font-family:"JetBrains Mono",monospace;font-size:12px;border:1px solid var(--border);background:#18181b;padding:8px 10px;border-radius:8px;color:var(--body)}
+.certs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.cert{border:1px solid var(--border-soft);background:var(--bg2);border-radius:10px;padding:14px;font-size:13.5px;line-height:1.5;color:var(--body);display:flex;gap:10px;align-items:flex-start}
+.cert i{color:var(--emerald);font-style:normal;font-family:"JetBrains Mono",monospace;font-weight:700;flex:none}
+@media(max-width:640px){.certs{grid-template-columns:1fr}}
+
+/* ---------- CONTACT / FOOTER ---------- */
+.contact{border:1px solid var(--border);border-radius:var(--radius);padding:22px;background:var(--panel)}
+.contact-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
+.contact h3{margin:0 0 8px;font-size:20px;color:var(--text);letter-spacing:-.02em}
+.contact-list{font-family:"JetBrains Mono",monospace;font-size:13px;line-height:2;color:var(--muted)}
+.contact-list a{color:var(--emerald-soft);text-decoration:none;word-break:break-all}
+.contact-list a:hover{text-decoration:underline}
+.btns{display:flex;flex-direction:column;gap:8px}
+.btns a{min-height:46px;display:flex;align-items:center;justify-content:center;border-radius:10px;text-decoration:none;font-weight:700;font-size:14px;padding:10px 14px;text-align:center}
+.btn-primary{background:var(--emerald);color:#052e22}
+.btn-ghost{border:1px solid var(--border);color:var(--text);background:#18181b}
+@media(max-width:700px){.contact-grid{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--border-soft);margin-top:56px;padding:22px 0 6px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
+footer p{font-size:13px;color:var(--faint)}
+footer .fl{display:flex;gap:6px}
+footer .fl a{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--muted);text-decoration:none;padding:10px;border-radius:8px;min-height:40px;display:inline-flex;align-items:center}
+footer .fl a:hover{color:var(--text);background:#18181b}
+
+/* ---------- CHATBOT ---------- */
+.chat-fab{position:fixed;right:18px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:50%;border:1px solid #2f4a3e;background:var(--emerald);color:#052e22;display:grid;place-items:center;cursor:pointer;box-shadow:0 12px 32px rgba(0,0,0,.5);padding:0}
+.chat-fab:hover{background:var(--emerald-soft)}
+.chat-fab:focus-visible,.chat-send:focus-visible,.chat-close:focus-visible,.chip:focus-visible{outline:2px solid var(--emerald);outline-offset:2px}
+.chat-fab svg{width:26px;height:26px}
+.chat-fab .dot{position:absolute;top:2px;right:2px;width:12px;height:12px;border-radius:50%;background:#fafafa;border:3px solid var(--bg)}
+.chat-panel{position:fixed;right:18px;bottom:86px;z-index:61;width:min(384px,calc(100vw - 24px));height:min(580px,calc(100dvh - 108px));background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.6);display:none;flex-direction:column;overflow:hidden}
+.chat-panel.open{display:flex}
+.chat-head{padding:14px 16px;border-bottom:1px solid var(--border);background:var(--panel2);display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.chat-head .k{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--emerald)}
+.chat-head h3{margin:3px 0 2px;font-size:15px;color:var(--text)}
+.chat-head p{font-size:12px;line-height:1.45;color:var(--faint)}
+.chat-close{flex:none;width:40px;height:40px;border-radius:9px;border:1px solid var(--border);background:#18181b;color:var(--body);cursor:pointer;font-size:18px;line-height:1}
+.chat-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:88%;padding:10px 12px;border-radius:12px;font-size:13.5px;line-height:1.6;white-space:pre-wrap;word-wrap:break-word}
+.msg.bot{align-self:flex-start;background:#18181b;border:1px solid var(--border-soft);color:var(--body);border-bottom-left-radius:4px}
+.msg.user{align-self:flex-end;background:var(--emerald-dim);color:#ecfdf5;border-bottom-right-radius:4px}
+.msg a{color:var(--emerald-soft);font-weight:600}
+.msg.bot a{color:var(--emerald-soft)}
+.chips-row{display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 10px}
+.chip{border:1px solid var(--border);background:var(--bg2);color:var(--body);border-radius:999px;padding:8px 11px;font-size:12px;cursor:pointer;min-height:36px;line-height:1.2}
+.chip:hover{border-color:var(--emerald);color:var(--text)}
+.chat-form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--border);background:var(--bg2)}
+.chat-input{flex:1;min-width:0;background:#18181b;border:1px solid var(--border);border-radius:10px;color:var(--text);padding:11px 12px;font-size:14px;min-height:44px}
+.chat-input::placeholder{color:var(--faint)}
+.chat-send{flex:none;background:var(--emerald);color:#052e22;border:0;border-radius:10px;padding:0 16px;font-weight:700;cursor:pointer;min-height:44px;font-size:14px}
+.chat-note{padding:0 14px 10px;background:var(--bg2);font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--faint);line-height:1.5}
+.msg.typing{display:inline-flex;gap:5px;align-items:center;padding:14px 12px}
+.msg.typing i{width:7px;height:7px;border-radius:50%;background:var(--emerald);display:inline-block;animation:typing-pulse 1.1s ease-in-out infinite}
+.msg.typing i:nth-child(2){animation-delay:.18s}
+.msg.typing i:nth-child(3){animation-delay:.36s}
+@keyframes typing-pulse{0%,60%,100%{opacity:.25;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+.chat-send:disabled{opacity:.55;cursor:wait}
+.chat-input:disabled{opacity:.65}
+@media(max-width:480px){
+  .chat-fab{right:14px;bottom:14px}
+  .chat-panel{right:12px;bottom:82px}
+}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .msg.typing i{animation:none;opacity:.7} }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="Rahul Tumula — back to top">
+      <span class="brand-mark">RT</span>
+      <span class="brand-name">Rahul Tumula <span>// portfolio</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="kicker">// identity · authorization · ai agents</div>
+    <h1>Rahul Tumula</h1>
+    <p class="role"><strong>Software Development Engineer II @ Amazon</strong> | Backend &amp; Distributed Systems | Identity &amp; Authentication | AI Infrastructure</p>
+    <p class="hero-loc"><i aria-hidden="true"></i> Herndon, Virginia, United States</p>
+    <div class="meta-row">
+      <a class="meta-resume" href="resume.pdf" download>Download Resume ↓</a>
+      <a href="https://github.com/rahulthumula" target="_blank" rel="noopener">github.com/rahulthumula ↗</a>
+      <a href="https://www.linkedin.com/in/rahul-tumula-15bb79179/" target="_blank" rel="noopener">linkedin ↗</a>
+      <a href="mailto:rahulthumula2077@gmail.com">rahulthumula2077@gmail.com</a>
+    </div>
+    <div class="hero-stats" aria-label="Highlights">
+      <div class="stat"><b>4.5+ yrs</b><span>Backend, identity &amp; applied AI experience</span></div>
+      <div class="stat"><b>250K+</b><span>Invoices processed at Recipe-Costing</span></div>
+      <div class="stat"><b>92% F1</b><span>Document extraction accuracy</span></div>
+      <div class="stat"><b>−85%</b><span>Manual data entry reduction</span></div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about" aria-labelledby="about-h">
+    <h2 class="sec" id="about-h">01 — About</h2>
+    <div class="about-grid">
+      <p>I'm a Software Development Engineer II at AWS in Herndon, Virginia, with over 4.5 years of experience across backend systems, identity and authorization, and applied AI. At AWS, I build authentication infrastructure for users and AI agents — passkey (WebAuthn) sign-in, self-service OAuth client registration, and secure delegation that lets AI agents act on a user's behalf with scoped, revocable access. Before AWS, I built a document-intelligence pipeline at Recipe-Costing that used Azure Vision and GPT-4o to extract structured data from more than 250,000 invoices at 92% F1, cutting manual data entry by 85%. Earlier backend roles at TCS and Groom focused on API performance, caching, and large-scale data processing. My core stack is Java and Python across AWS and Azure. My current focus is the authorization layer for autonomous agents: scoped delegation, human-in-the-loop approvals, and auditability.</p>
+      <aside class="about-card" aria-label="At a glance">
+        <h3>At a glance</h3>
+        <ul>
+          <li><b>Current role</b>SDE II — Amazon Web Services</li>
+          <li><b>Focus</b>Identity &amp; authorization for AI agents</li>
+          <li><b>Core stack</b>Java · Python · AWS · Azure</li>
+          <li><b>Based in</b>Herndon, Virginia</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" aria-labelledby="exp-h">
+    <h2 class="sec" id="exp-h">02 — Experience</h2>
+
+    <article class="job">
+      <div class="job-head"><div><h3>Software Development Engineer II — Amazon Web Services</h3><p class="sub">Herndon, VA · Aug 2025 – Present</p></div><span class="tag">Current</span></div>
+      <ul>
+        <li>Build authentication and account-security features for AWS customers, including passkey (WebAuthn) sign-in, using Java services on AWS Lambda and DynamoDB.</li>
+        <li>Enabled secure access for AI agents acting on users' behalf through scoped, revocable OAuth-based delegation with least-privilege scope narrowing.</li>
+        <li>Delivered self-service OAuth client registration across service APIs, replacing manual configuration with validated, managed client settings.</li>
+        <li>Scaled account-recovery services across multiple AWS partitions and modernized SMS delivery for account unlock, with feature flags and availability monitoring.</li>
+        <li>Strengthened the security of identity services through systematic input-validation and output-encoding fixes, and closed monitoring gaps with alerting and error-rate dashboards.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <h3>AI Engineer — Recipe-Costing</h3><p class="sub">Miami, FL · Jul 2024 – Jul 2025</p>
+      <ul>
+        <li>Built an Azure Vision + GPT-4o extraction pipeline over 250K+ invoices — 92% F1, 85% reduction in manual data entry.</li>
+        <li>Orchestrated 10K items/day on Azure Durable Functions with parallel ingestion, exponential backoff, and compensation patterns; failure rate below 0.01%.</li>
+        <li>Built semantic search with Azure Cognitive Search and custom embeddings; integrated GenAI services via FastAPI and .NET.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <h3>Volunteer AI Engineer — Healthi AI</h3><p class="sub">Cambridge, MA · Jun 2024 – Jul 2024</p>
+      <ul><li>Deployed Dockerized FastAPI inference endpoints on AWS at sub-300 ms P95 latency, supporting 100 concurrent requests.</li></ul>
+    </article>
+
+    <article class="job">
+      <h3>Backend Developer — Tata Consultancy Services</h3><p class="sub">Hyderabad, India · Jun 2021 – Dec 2022</p>
+      <ul>
+        <li>Cut Flask endpoint P95 latency from 200 ms to 25 ms by introducing Redis caching for session and lookup data.</li>
+        <li>Cut deployment time by 50% with Azure DevOps CI/CD pipelines and automated pytest and Postman testing.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <h3>Backend Developer — Groom</h3><p class="sub">Hyderabad, India · May 2020 – Jun 2021</p>
+      <ul>
+        <li>Built a spaCy NLP pipeline to summarize and categorize 100K+ insurance documents with 87% multi-label classification accuracy.</li>
+        <li>Containerized PySpark ETL jobs and scheduled them on EKS using Kubernetes CronJobs and dynamic executor scaling.</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" aria-labelledby="skills-h">
+    <h2 class="sec" id="skills-h">03 — Technical Skills</h2>
+    <div class="skills">
+      <div class="skill"><h3>Languages &amp; Frameworks</h3><p>Python · Java · Ruby on Rails · TypeScript / JavaScript · Go · SQL · Flask · FastAPI</p><div class="chips"><span>Python</span><span>Java</span><span>Ruby on Rails</span><span>TypeScript</span><span>Go</span><span>FastAPI</span></div></div>
+      <div class="skill"><h3>Identity &amp; Security</h3><p>OAuth 2.0 · OpenID Connect (OIDC) · WebAuthn · Passkeys / Biometric Authentication · Token Delegation · Session Security</p><div class="chips"><span>OAuth 2.0</span><span>OIDC</span><span>WebAuthn</span><span>Passkeys</span><span>Token Delegation</span></div></div>
+      <div class="skill"><h3>Backend &amp; Cloud</h3><p>AWS (Lambda, DynamoDB, MySQL, CDK, CloudWatch) · Azure (Durable Functions, Cognitive Search) · Docker · Kubernetes / EKS · Redis · REST APIs · Smithy</p><div class="chips"><span>AWS</span><span>Azure</span><span>Docker</span><span>Kubernetes</span><span>Redis</span></div></div>
+      <div class="skill"><h3>AI &amp; Data</h3><p>Azure OpenAI (GPT-4o) · Azure Vision · RAG · Semantic / Vector Search · Custom Embeddings · LangGraph · PySpark</p><div class="chips"><span>GPT-4o</span><span>Azure Vision</span><span>RAG</span><span>Vector Search</span><span>LangGraph</span></div></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" aria-labelledby="proj-h">
+    <h2 class="sec" id="proj-h">04 — Featured Projects</h2>
+    <div class="projects">
+      <article class="proj featured">
+        <h3>Identity &amp; Authorization Gateway for AI Agents <span class="badge">In progress</span></h3>
+        <p>A personal build of “OAuth, but for agents”: a service that lets AI agents act on behalf of users with scoped, short-lived, revocable delegated authority. A user grants an agent a scope; the gateway issues a short-lived token, and any delegation to a sub-agent can only narrow that scope, never widen it. A policy engine decides whether a sensitive action is allowed, denied, or paused for human approval (deny-by-default on timeout), and every action lands in a tamper-evident, hash-chained audit log. Revoking a grant propagates in seconds, killing every downstream delegated token with it.</p>
+        <p class="stack">Python / FastAPI · JWT / OAuth 2.0 token exchange · Docker</p>
+        <p class="proj-links"><a href="https://github.com/rahulthumula" target="_blank" rel="noopener">github ↗</a></p>
+      </article>
+      <div class="proj-grid">
+        <article class="proj">
+          <h3>Recipe-Costing — Invoice Document Intelligence</h3>
+          <p>An Azure Vision + GPT-4o pipeline that extracts structured data from 250K+ invoices, reaching 92% F1 and reducing manual data entry by 85%. Orchestrated on Azure Durable Functions at 10K items/day with parallel ingestion, exponential backoff, and compensation patterns, holding the failure rate below 0.01%. Includes semantic search over recipes and ingredients built on Azure Cognitive Search with custom embeddings.</p>
+          <p class="stack">Azure Vision · GPT-4o · Durable Functions · Cognitive Search</p>
+          <p class="proj-links"><a href="https://github.com/rahulthumula" target="_blank" rel="noopener">github ↗</a></p>
+        </article>
+        <article class="proj">
+          <h3>Healthi AI — Low-Latency Inference Endpoints</h3>
+          <p>Dockerized FastAPI inference services deployed on AWS, serving predictions at sub-300 ms P95 latency and supporting 100 concurrent requests.</p>
+          <p class="stack">FastAPI · Docker · AWS</p>
+          <p class="proj-links"><a href="https://github.com/rahulthumula/HealthiAI" target="_blank" rel="noopener">github ↗</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" aria-labelledby="edu-h">
+    <h2 class="sec" id="edu-h">05 — Education &amp; Certifications</h2>
+    <div class="edu">
+      <h3>Master of Science in Computer Science</h3>
+      <p class="sub">University of Missouri–Kansas City · 2023 – 2024</p>
+      <div class="edu-facts"><span>GPA: 3.3 / 4.0</span><span>Graduate Teaching Assistant · 2023–2024</span></div>
+      <p>Graduate Teaching Assistant (2023–2024) — guided graduate students in statistical learning, model selection, and evaluation; graded assignments and projects.</p>
+    </div>
+    <div class="certs" aria-label="Certifications">
+      <div class="cert"><i aria-hidden="true">✓</i><span>Microsoft Certified: Azure AI Fundamentals</span></div>
+      <div class="cert"><i aria-hidden="true">✓</i><span>Microsoft Certified: Azure AI Engineer Associate</span></div>
+      <div class="cert"><i aria-hidden="true">✓</i><span>NVIDIA: Generative AI / LLM Certification</span></div>
+      <div class="cert"><i aria-hidden="true">✓</i><span>Oracle Certified: Generative AI</span></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" aria-labelledby="contact-h">
+    <h2 class="sec" id="contact-h">06 — Contact</h2>
+    <div class="contact">
+      <div class="contact-grid">
+        <div>
+          <h3>Get in touch</h3>
+          <p style="margin-bottom:14px">The fastest way to reach Rahul is by email or LinkedIn.</p>
+          <div class="contact-list">
+            Email: <a href="mailto:rahulthumula2077@gmail.com">rahulthumula2077@gmail.com</a><br>
+            Phone: 816-896-8105<br>
+            GitHub: <a href="https://github.com/rahulthumula" target="_blank" rel="noopener">github.com/rahulthumula</a><br>
+            LinkedIn: <a href="https://www.linkedin.com/in/rahul-tumula-15bb79179/" target="_blank" rel="noopener">linkedin.com/in/rahul-tumula-15bb79179</a><br>
+            Location: Herndon, Virginia, United States
+          </div>
+        </div>
+        <div class="btns">
+          <a class="btn-primary" href="resume.pdf" download>Download Resume ↓</a>
+          <a class="btn-primary" href="mailto:rahulthumula2077@gmail.com">Email Rahul</a>
+          <a class="btn-ghost" href="https://www.linkedin.com/in/rahul-tumula-15bb79179/" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
+          <a class="btn-ghost" href="https://github.com/rahulthumula" target="_blank" rel="noopener">View GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Rahul Tumula · Herndon, Virginia</p>
+    <div class="fl">
+      <a href="https://github.com/rahulthumula" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/rahul-tumula-15bb79179/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+</main>
+
+<!-- CHATBOT -->
+<button type="button" class="chat-fab" id="chatFab" aria-label="Chat with Rahul's portfolio assistant" aria-expanded="false" aria-controls="chatPanel">
+  <span class="dot" aria-hidden="true"></span>
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.5 0-3-.4-4.2-1.1L3 20l1.1-5.3A8.5 8.5 0 1 1 21 11.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 10.5h7M8.5 13.5h4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+</button>
+
+<div class="chat-panel" id="chatPanel" role="dialog" aria-label="Portfolio assistant chat" aria-hidden="true">
+  <div class="chat-head">
+    <div>
+      <div class="k">// portfolio assistant</div>
+      <h3>Ask about Rahul</h3>
+      <p>Answers come only from the content on this page.</p>
+    </div>
+    <button type="button" class="chat-close" id="chatClose" aria-label="Close chat">×</button>
+  </div>
+  <div class="chat-msgs" id="chatMsgs" aria-live="polite"></div>
+  <div class="chips-row" id="chatChips" aria-label="Suggested questions">
+    <button type="button" class="chip">What does he do at AWS?</button>
+    <button type="button" class="chip">AI experience?</button>
+    <button type="button" class="chip">Top skills?</button>
+    <button type="button" class="chip">Projects?</button>
+    <button type="button" class="chip">How can I contact him?</button>
+  </div>
+  <form class="chat-form" id="chatForm">
+    <input class="chat-input" id="chatInput" type="text" placeholder="Ask about experience, skills, projects…" autocomplete="off" aria-label="Your question"/>
+    <button type="submit" class="chat-send">Send</button>
+  </form>
+  <div class="chat-note">AI assistant · answers grounded in the content on this page</div>
+</div>
+
+<script>
+(function(){
+  // Nav active state
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(a){a.classList.remove('active')});
+          var a = map[e.target.id]; if(a) a.classList.add('active');
+        }
+      });
+    }, {rootMargin:'-30% 0px -60% 0px'});
+    ['about','experience','skills','projects','education','contact'].forEach(function(id){
+      var el=document.getElementById(id); if(el) obs.observe(el);
+    });
+  }
+
+  // ---- Chatbot ----
+  var fab=document.getElementById('chatFab'),
+      panel=document.getElementById('chatPanel'),
+      closeBtn=document.getElementById('chatClose'),
+      msgs=document.getElementById('chatMsgs'),
+      form=document.getElementById('chatForm'),
+      input=document.getElementById('chatInput'),
+      chips=document.getElementById('chatChips'),
+      greeted=false;
+
+  var GH='<a href="https://github.com/rahulthumula" target="_blank" rel="noopener">github.com/rahulthumula</a>';
+  var LI='<a href="https://www.linkedin.com/in/rahul-tumula-15bb79179/" target="_blank" rel="noopener">LinkedIn</a>';
+  var EM='<a href="mailto:rahulthumula2077@gmail.com">rahulthumula2077@gmail.com</a>';
+
+  function addMsg(html, who){
+    var d=document.createElement('div');
+    d.className='msg '+who;
+    if(who==='user'){ d.textContent=html; } else { d.innerHTML=html; }
+    msgs.appendChild(d);
+    msgs.scrollTop=msgs.scrollHeight;
+    return d;
+  }
+  function openChat(){
+    panel.classList.add('open'); panel.setAttribute('aria-hidden','false');
+    fab.setAttribute('aria-expanded','true');
+    if(!greeted){
+      greeted=true;
+      addMsg("Hi, I'm Rahul's portfolio assistant. Ask me about his experience, skills, or projects.",'bot');
+    }
+    setTimeout(function(){ input.focus(); },60);
+  }
+  function closeChat(){
+    panel.classList.remove('open'); panel.setAttribute('aria-hidden','true');
+    fab.setAttribute('aria-expanded','false'); fab.focus();
+  }
+  fab.addEventListener('click', function(){ panel.classList.contains('open') ? closeChat() : openChat(); });
+  closeBtn.addEventListener('click', closeChat);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && panel.classList.contains('open')) closeChat(); });
+
+  function has(q, words){ for(var i=0;i<words.length;i++){ if(q.indexOf(words[i])!==-1) return true; } return false; }
+
+  function answer(raw){
+    var q=' '+raw.toLowerCase().replace(/[^a-z0-9+#.\s]/g,' ')+' ';
+
+    if(has(q,[' hello ',' hi ',' hey ',' namaste ']) && q.trim().length<24)
+      return "Hi! I can tell you about Rahul's work at AWS, his AI experience, skills, projects, education, and how to contact him. Try one of the suggestions below, or type your own question.";
+
+    if(has(q,['gateway','oauth but for agents','authorization gateway','agent gateway']))
+      return "The Identity &amp; Authorization Gateway for AI Agents is Rahul's in-progress personal project — “OAuth, but for agents.”\n\n• A user grants an agent a scope and the gateway issues a short-lived token\n• Delegation to a sub-agent can only narrow scope, never widen it\n• A policy engine allows, denies, or pauses sensitive actions for human approval (deny-by-default on timeout)\n• Every action goes into a tamper-evident, hash-chained audit log\n• Revoking a grant propagates in seconds, killing downstream tokens\n\nBuilt with Python / FastAPI, JWT / OAuth 2.0 token exchange, and Docker.";
+
+    if(has(q,['passkey','webauthn','biometric','fido']))
+      return "At AWS, Rahul builds authentication and account-security features for AWS customers, including passkey (WebAuthn) sign-in, using Java services on AWS Lambda and DynamoDB. Passkeys / WebAuthn is a core part of his identity &amp; security skill set, alongside OAuth 2.0, OIDC, and token delegation.";
+
+    if(has(q,['delegation','delegated','token exchange','agent identity','ai agent',' ai agents','autonomous agent']))
+      return "Enabled secure access for AI agents acting on users' behalf through scoped, revocable OAuth-based delegation with least-privilege scope narrowing.\n\nHis current focus is the authorization layer for autonomous agents — scoped delegation, human-in-the-loop approvals, and auditability.";
+
+    if(has(q,['oauth','oidc','openid','client registration','authentication','identity']))
+      return "Identity is Rahul's specialty at AWS:\n\n• Passkey (WebAuthn) sign-in and account-security features, built with Java services on AWS Lambda and DynamoDB\n• Enabled secure access for AI agents acting on users' behalf through scoped, revocable OAuth-based delegation with least-privilege scope narrowing\n• Self-service OAuth client registration across service APIs, replacing manual configuration with validated, managed client settings\n• Account-recovery services scaled across multiple AWS partitions, with modernized SMS delivery for account unlock";
+
+    if(has(q,['recipe','invoice','document intelligence','gpt-4o','gpt4o','azure vision']))
+      return "At Recipe-Costing (AI Engineer, Jul 2024 – Jul 2025, Miami, FL), Rahul built an Azure Vision + GPT-4o extraction pipeline over 250K+ invoices — 92% F1 and an 85% reduction in manual data entry.\n\nHe orchestrated 10K items/day on Azure Durable Functions (parallel ingestion, exponential backoff, compensation patterns; failure rate below 0.01%) and built semantic search with Azure Cognitive Search and custom embeddings, integrating GenAI services via FastAPI and .NET.";
+
+    if(has(q,['project','projects','built','portfolio project','side project']))
+      return "Rahul's three featured projects:\n\n1. Identity &amp; Authorization Gateway for AI Agents (in progress) — scoped, short-lived, revocable delegated authority for agents, with a policy engine, human approvals, and a hash-chained audit log. Python / FastAPI, JWT / OAuth 2.0, Docker.\n\n2. Recipe-Costing — Invoice Document Intelligence — Azure Vision + GPT-4o over 250K+ invoices, 92% F1, manual entry −85%.\n\n3. Healthi AI — Low-Latency Inference Endpoints — Dockerized FastAPI on AWS at sub-300 ms P95, 100 concurrent requests.\n\nAsk me about any one of them for more detail.";
+
+    if(has(q,['tcs','tata','consultancy']))
+      return "At Tata Consultancy Services (Backend Developer, Hyderabad, Jun 2021 – Dec 2022), Rahul cut Flask endpoint P95 latency from 200 ms to 25 ms by introducing Redis caching for session and lookup data, and cut deployment time by 50% with Azure DevOps CI/CD pipelines and automated pytest and Postman testing.";
+
+    if(has(q,['groom']))
+      return "At Groom (Backend Developer, Hyderabad, May 2020 – Jun 2021), Rahul built a spaCy NLP pipeline to summarize and categorize 100K+ insurance documents with 87% multi-label classification accuracy, and containerized PySpark ETL jobs scheduled on EKS using Kubernetes CronJobs and dynamic executor scaling.";
+
+    if(has(q,['healthi']))
+      return "At Healthi AI (Volunteer AI Engineer, Cambridge, MA, Jun 2024 – Jul 2024), Rahul deployed Dockerized FastAPI inference endpoints on AWS at sub-300 ms P95 latency, supporting 100 concurrent requests. It's also one of his featured projects.";
+
+    if(has(q,['certification','certified','certificate','azure ai fundamental','nvidia','oracle cert']))
+      return "Rahul holds four certifications:\n\n• Microsoft Certified: Azure AI Fundamentals\n• Microsoft Certified: Azure AI Engineer Associate\n• NVIDIA: Generative AI / LLM Certification\n• Oracle Certified: Generative AI";
+
+    if(has(q,['education','university','degree','college','gpa','umkc','missouri','study','studied','masters','master ']))
+      return "Rahul earned a Master of Science in Computer Science from the University of Missouri–Kansas City (2023 – 2024), GPA 3.3/4.0. He was also a Graduate Teaching Assistant (2023–2024) — guiding graduate students in statistical learning, model selection, and evaluation, and grading assignments and projects.";
+
+    if(has(q,['skill','stack','language','technolog','python','java','framework','tools','proficient']))
+      return "Rahul's skills, by group:\n\n• Languages &amp; Frameworks: Python · Java · Ruby on Rails · TypeScript / JavaScript · Go · SQL · Flask · FastAPI\n• Identity &amp; Security: OAuth 2.0 · OIDC · WebAuthn · Passkeys · Token Delegation · Session Security\n• Backend &amp; Cloud: AWS (Lambda, DynamoDB, MySQL, CDK, CloudWatch) · Azure (Durable Functions, Cognitive Search) · Docker · Kubernetes / EKS · Redis · REST APIs · Smithy\n• AI &amp; Data: Azure OpenAI (GPT-4o) · Azure Vision · RAG · Semantic / Vector Search · Custom Embeddings · LangGraph · PySpark\n\nHis core stack is Java and Python across AWS and Azure.";
+
+    if(has(q,['ai experience','artificial intelligence','genai','generative ai','machine learning',' ml ','llm','rag','semantic search','embeddings']))
+      return "Rahul's AI experience:\n\n• AWS — Enabled secure access for AI agents acting on users' behalf through scoped, revocable OAuth-based delegation with least-privilege scope narrowing; his focus is the authorization layer for autonomous agents\n• Recipe-Costing — Azure Vision + GPT-4o pipeline over 250K+ invoices (92% F1, manual entry −85%), plus semantic search with Azure Cognitive Search and custom embeddings\n• Healthi AI — Dockerized FastAPI inference endpoints on AWS, sub-300 ms P95\n• Groom — spaCy NLP pipeline over 100K+ insurance documents, 87% multi-label accuracy\n• AI &amp; Data skills: Azure OpenAI (GPT-4o), Azure Vision, RAG, semantic / vector search, custom embeddings, LangGraph, PySpark";
+
+    if(has(q,['year','how long','experience','background','career','roles','worked','previous job','history']))
+      return "Rahul has over 4.5 years of experience:\n\n• SDE II — Amazon Web Services, Herndon, VA (Aug 2025 – Present)\n• AI Engineer — Recipe-Costing, Miami, FL (Jul 2024 – Jul 2025)\n• Volunteer AI Engineer — Healthi AI, Cambridge, MA (Jun – Jul 2024)\n• Backend Developer — Tata Consultancy Services, Hyderabad (Jun 2021 – Dec 2022)\n• Backend Developer — Groom, Hyderabad (May 2020 – Jun 2021)";
+
+    if(has(q,['aws','amazon','current role','current job','what does he do','his job','his role','work at']))
+      return "Rahul is a Software Development Engineer II at AWS in Herndon, Virginia (Aug 2025 – Present), working on identity &amp; authorization for AI agents and applied AI.\n\nWhat he builds there:\n• Authentication and account-security features for AWS customers, including passkey (WebAuthn) sign-in, using Java services on AWS Lambda and DynamoDB\n• Enabled secure access for AI agents acting on users' behalf through scoped, revocable OAuth-based delegation with least-privilege scope narrowing\n• Self-service OAuth client registration across service APIs, replacing manual configuration with validated, managed client settings\n• Account-recovery services scaled across multiple AWS partitions, with modernized SMS delivery for account unlock, feature flags, and availability monitoring\n• Security hardening of identity services through input-validation and output-encoding fixes, plus alerting and error-rate dashboards that closed monitoring gaps";
+
+    if(has(q,['github']))
+      return "Rahul's GitHub is "+GH+" — you can also use the GitHub link in the hero and footer of this page.";
+
+    if(has(q,['linkedin']))
+      return "Rahul's LinkedIn is "+LI+". It's also linked in the hero, Contact section, and footer.";
+
+    if(has(q,['hire','hiring','opportunit','job opening','recruit','open to','available','salary','compensation']))
+      return "Rahul is a Software Development Engineer II at AWS, focused on identity &amp; authorization for AI agents. The best way to discuss opportunities with him is via "+LI+" or email at "+EM+".";
+
+    if(has(q,['contact','email','reach','get in touch','phone','call him']))
+      return "You can reach Rahul here:\n\n• Email: "+EM+"\n• Phone: 816-896-8105\n• GitHub: "+GH+"\n• LinkedIn: "+LI+"\n• Location: Herndon, Virginia, United States";
+
+    if(has(q,['location','where is','based','live','virginia','herndon']))
+      return "Rahul is based in Herndon, Virginia, United States, where he works as an SDE II at AWS.";
+
+    if(has(q,['who is','about rahul','tell me about','summary','overview','introduce']))
+      return "Rahul Tumula is a Software Development Engineer II at AWS in Herndon, Virginia, with over 4.5 years of experience across backend systems, identity and authorization, and applied AI. He builds authentication infrastructure for users and AI agents — passkey (WebAuthn) sign-in, self-service OAuth client registration, and secure delegation that lets AI agents act on a user's behalf with scoped, revocable access. Before AWS he built the Recipe-Costing document-intelligence pipeline (250K+ invoices, 92% F1). His core stack is Java and Python across AWS and Azure.";
+
+    if(has(q,['thank','thanks','great','cool','awesome']))
+      return "You're welcome! If you'd like to know more, ask about his AWS work, the identity gateway project, or his skills — or reach him directly at "+EM+".";
+
+    return "I can answer questions about Rahul's experience, skills, projects, and background — for example his AWS role, the identity gateway project, or his Recipe-Costing work. For anything else, the best route is email at "+EM+" or "+LI+".";
+  }
+
+  // ---- Real AI chat client ----
+  // Conversation history sent to the API on every turn.
+  var history=[];
+  var sending=false;
+  var sendBtn=form.querySelector('.chat-send');
+
+  function escapeHtml(s){
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function plainText(html){
+    var tmp=document.createElement('div');
+    tmp.innerHTML=html;
+    return (tmp.textContent||'').trim();
+  }
+  function showTyping(){
+    var d=document.createElement('div');
+    d.className='msg bot typing';
+    d.setAttribute('aria-label','Assistant is typing');
+    d.innerHTML='<i></i><i></i><i></i>';
+    msgs.appendChild(d);
+    msgs.scrollTop=msgs.scrollHeight;
+    return d;
+  }
+  function setSending(on){
+    sending=on;
+    sendBtn.disabled=on;
+    input.disabled=on;
+  }
+
+  // POST the conversation to the same-origin AI endpoint.
+  // Resolves to the reply string, or null on any failure.
+  function fetchReply(){
+    return fetch('/api/chat', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({messages:history})
+    }).then(function(res){
+      if(!res.ok) return null;
+      return res.json().then(function(data){
+        return (data && typeof data.reply==='string' && data.reply.trim()) ? data.reply.trim() : null;
+      });
+    }).catch(function(){ return null; });
+  }
+
+  function ask(text){
+    var t=(text||'').trim(); if(!t || sending) return;
+    addMsg(t,'user');
+    input.value='';
+    history.push({role:'user', content:t});
+    setSending(true);
+    var typing=showTyping();
+    fetchReply().then(function(reply){
+      typing.remove();
+      setSending(false);
+      if(reply!==null){
+        // Live AI answer — render as plain text (escaped), keep line breaks.
+        addMsg(escapeHtml(reply),'bot');
+        history.push({role:'assistant', content:reply});
+      }else{
+        // Fallback: the scripted Q&A below, used only when the AI endpoint
+        // is unreachable or returns an error (offline / demo mode).
+        var fallback=answer(t);
+        addMsg(fallback,'bot');
+        history.push({role:'assistant', content:plainText(fallback)});
+      }
+      input.focus();
+    });
+  }
+  form.addEventListener('submit', function(e){ e.preventDefault(); ask(input.value); });
+  chips.addEventListener('click', function(e){
+    var b=e.target.closest('.chip'); if(b) ask(b.textContent);
+  });
+})();
+</script>
+</body>
+</html>
